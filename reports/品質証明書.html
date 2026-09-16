@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>品質証明書 — design_ravo_drawings</title>
+<style>
+:root{--navy:#1b2a4a;--teal:#0f766e;--ink:#1f2937;--line:#d8dee9;--bg:#eef1f6}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);line-height:1.65;
+  font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic UI","Meiryo",sans-serif}
+.sheet{max-width:880px;margin:24px auto;background:#fff;box-shadow:0 2px 14px rgba(27,42,74,.12)}
+.cover{background:linear-gradient(135deg,#1b2a4a 0%,#27406e 100%);color:#fff;padding:38px 44px 32px}
+.cover .en{letter-spacing:.22em;font-size:11px;color:#9fb3d9;text-transform:uppercase}
+h1{margin:6px 0 2px;font-size:30px;letter-spacing:.14em;font-weight:700}
+.proj{font-size:16px;color:#dbe5f5;margin-top:12px}
+.issued{font-size:12px;color:#9fb3d9;margin-top:2px}
+.body{padding:30px 44px 8px}
+.cards{display:flex;gap:12px;flex-wrap:wrap;margin:0 0 8px}
+.card{flex:1 1 150px;border:1px solid var(--line);border-top:3px solid var(--teal);
+  border-radius:6px;padding:12px 14px;text-align:center;background:#fbfcfe}
+.card .num{font-size:26px;font-weight:700;color:var(--navy)}
+.card .lbl{font-size:11px;color:#64748b;margin-top:2px}
+h2{font-size:16px;color:var(--navy);border-left:4px solid var(--teal);padding-left:10px;margin:32px 0 12px}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th{background:#f1f4f9;color:#334155;text-align:left;padding:7px 10px;border-bottom:2px solid var(--navy);font-size:11.5px}
+td{padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.gname{font-weight:600;color:var(--navy)}
+.gdesc{font-size:10.5px;color:#8a94a6;margin-top:1px}
+.badge{display:inline-block;padding:1px 10px;border-radius:999px;font-size:11px;font-weight:700;white-space:nowrap}
+.b-pass{background:#e2f3ef;color:#0f766e}.b-warn{background:#fdf1de;color:#b45309}
+.b-fail{background:#fbe7e7;color:#b91c1c}.b-na{background:#eef0f3;color:#6b7280}
+/* 未確認 / 一部未確認 = 「まだ測れていない」。合格でも注意でもないことが一目で分かる色。 */
+.b-unv{background:#eaeefb;color:#3730a3;border:1px dashed #6366f1}
+/* 【X-08】完成の検査の開示帯。表紙の直下 = お客様が最初に目にする位置。 */
+.cband{padding:16px 44px 18px}
+.cband-h{font-size:16px;font-weight:700;letter-spacing:.04em}
+.cband-b{font-size:12px;margin-top:5px;line-height:1.75}
+.cband.ng{background:#fdecec;color:#8f1d1d;border-top:5px solid #b91c1c;border-bottom:1px solid #f2c9c9}
+.cband.ok{background:#e8f5f1;color:#0d5c53;border-top:5px solid #0f766e;border-bottom:1px solid #c3e3db}
+.vnote{font-size:11.5px;color:#9fb3d9;font-weight:400}
+.note{font-size:11px;color:#8a94a6;margin-top:8px}
+.rolebox{display:flex;align-items:center;gap:20px;border:1px solid var(--line);border-radius:6px;
+  padding:16px 22px;background:#fbfcfe}
+.rolenum{font-size:42px;font-weight:800;color:var(--teal);line-height:1}
+.roletext{font-size:12.5px;color:#475569}
+.chartwrap{text-align:center;padding:6px 0 0}
+.scoreline{font-size:13px;color:#334155;margin-top:6px}
+.scoreline b{font-size:20px;color:var(--teal)}
+.bars{display:flex;flex-direction:column;gap:8px;max-width:560px;margin:8px auto 0}
+.barrow{display:flex;align-items:center;gap:10px;font-size:12px}
+.barlabel{flex:0 0 110px;text-align:right;color:#334155}
+.bartrack{flex:1;background:#eef0f3;border-radius:999px;height:12px;overflow:hidden}
+.barfill{display:block;height:100%;background:#0f766e;border-radius:999px}
+.barval{flex:0 0 42px;color:#0f766e;font-weight:700}
+.empty{border:1px dashed var(--line);border-radius:6px;padding:18px 20px;font-size:12.5px;color:#64748b;background:#fbfcfe}
+.seal{display:flex;align-items:center;gap:18px;border:1px solid var(--line);border-radius:8px;
+  padding:16px 20px;background:#fbfcfe;margin-top:10px}
+.qr{flex:0 0 auto}
+.sealtext{font-size:12px;color:#475569}
+.sealtext .fp{font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+  font-size:13px;color:var(--navy);font-weight:700;letter-spacing:.04em}
+.sealtext .vurl{font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+  font-size:11px;color:#0f766e;word-break:break-all}
+footer{border-top:1px solid var(--line);margin-top:24px;padding:14px 44px 26px;font-size:11px;color:#8a94a6;
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+.brand{font-weight:700;color:var(--navy)}
+@media print{
+  body{background:#fff}
+  .sheet{box-shadow:none;margin:0;max-width:none}
+  @page{size:A4;margin:13mm}
+  h2{page-break-after:avoid}
+  tr,.cards,.rolebox,.chartwrap,.seal{page-break-inside:avoid}
+}
+</style></head><body>
+<main class="sheet">
+<div class="cover">
+<div class="en">Quality Evidence Report</div>
+<h1>品質証明書</h1>
+<div class="proj">対象システム: design_ravo_drawings</div>
+<div class="proj">総合判定: <b>要確認</b> <span class="vnote">(実施できた検査についての判定です)</span></div>
+<div class="issued">発行日: 2026年09月14日</div>
+</div>
+<div class="cband ng"><div class="cband-h">この時点では完成の検査を通過していません</div><div class="cband-b">自動の品質確認が最後まで終わらないまま、先へ進めた記録が残っています。 本証明書は、この時点までに記録された検査結果をそのまま集計したものです。以下の判定は、この成果物が完成していることの保証ではありません。 完成の検査を通した状態での証明書が必要な場合は、検査を実施したうえで発行し直します。担当者までご連絡ください。 完成の検査の記録日時: 2026年09月14日 20:59 (UTC)</div></div>
+<div class="body">
+<div class="cards">
+<div class="card"><div class="num">93</div><div class="lbl">実施済み品質ゲート (うち合格 7 / 未確認 1)</div></div>
+<div class="card"><div class="num">78</div><div class="lbl">総合品質スコア (実測軸平均 / 100点)</div></div>
+</div>
+<h2>1. 品質ゲート検証結果</h2>
+<table><thead><tr><th style='width:38%'>検証項目</th><th style='width:14%'>判定</th><th>要点 (実測値)</th></tr></thead><tbody>
+<tr><td><div class="gname">oscg verdict</div></td><td><span class="badge b-fail">不合格</span></td><td></td></tr>
+<tr><td><div class="gname">アクセシビリティゲート</div></td><td><span class="badge b-pass">合格</span></td><td></td></tr>
+<tr><td><div class="gname">APIハンドラ例外露出ゲート</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">APIキー即納品性</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">資産活用率 常設監視ゲート</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">監査ログ実装ゲート</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">UI/UX品質検証</div><div class="gdesc">画面の使いやすさ・見た目の品質を検証</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">業務自動化深度</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">バックアップ復元検証</div><div class="gdesc">バックアップ取得・復元機能の実在を検証</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">barcode-scan-injector</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">ビルド/DB整合ハイジーン</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">業務計算オラクルゲート</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">業務サイクル完備ゲート</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">実務帳票体裁ゲート</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">業務計算 実走照合率 開示ゲート</div></td><td><span class="badge b-pass">合格</span></td><td></td></tr>
+<tr><td><div class="gname">完成の検査</div><div class="gdesc">成果物を実際に起動し、画面まで確認できたかを検証</div></td><td><span class="badge b-fail">不合格</span></td><td>自動の品質確認が最後まで終わらないまま、先へ進めた記録が残っています。</td></tr>
+<tr><td><div class="gname">法令対応実装検証</div><div class="gdesc">該当業種の法令要件(個情法/マイナンバー/電帳法/インボイス等)の実装網羅を検証</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">資格情報露出禁止ゲート</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">入力フォーム完備検証</div><div class="gdesc">業務データの作成・編集・書込経路の実在を検証</div></td><td><span class="badge b-na">対象外</span></td><td>作成フォーム網羅 0% ／ 書込経路 0% ／ 編集フォーム 0%</td></tr>
+<tr><td><div class="gname">CSV入出力検証</div><div class="gdesc">CSV取込・出力機能の実在と整合を検証</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">初期データ充足検証</div><div class="gdesc">初回起動時から業務データが揃っているかを検証</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">永続DB保証</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">業務貫通度検証</div><div class="gdesc">データ充足・画面間連携・業務フローの貫通を検証</div></td><td><span class="badge b-warn">注意</span></td><td>到達深度 L3 ／ データ充足 0%</td></tr>
+<tr><td><div class="gname">依存部品の弱点ゲート</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">デプロイ時本番URLログイン保証</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">デプロイ恒久化ゲート</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">デプロイ直後の本番URL軽量スモーク</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">順序強制ゲート</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">書類先行の関門</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">差別化機能ゲート</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">帳票出力検証</div><div class="gdesc">請求書等の帳票・ドキュメント出力機能を検証</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">ドメインレーン注入ゲート</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">図面案件の完成判定</div></td><td><span class="badge b-pass">合格</span></td><td></td></tr>
+<tr><td><div class="gname">動的ルート実データ到達性ゲート</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">生成物 外部送信透明性ゲート</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">起動ポートと認証設定の整合</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">エラー体験ゲート</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">外部API UXフォールバックゲート</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">ファイル取込みの実機保証</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">帳票様式忠実度ゲート</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">DS-M2 Gate Ledger</div></td><td><span class="badge b-pass">合格</span></td><td></td></tr>
+<tr><td><div class="gname">ゲート結線到達性</div></td><td><span class="badge b-warn">注意</span></td><td></td></tr>
+<tr><td><div class="gname">実機接続検証ゲート</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">追加開発URL実到達ゲート</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">統合整合性検証</div><div class="gdesc">機能追加時の既存機能との整合を検証</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">在庫整合性ゲート</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">知財コンプライアンスゲート</div></td><td><span class="badge b-pass">合格</span></td><td></td></tr>
+<tr><td><div class="gname">業務階層深度検証</div><div class="gdesc">業界知識・業務ロジックが多層で実装されているかを検証</div></td><td><span class="badge b-na">対象外</span></td><td>到達階層 対象外</td></tr>
+<tr><td><div class="gname">レイアウト健全性ゲート</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">実ブラウザ全ページスモーク</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">継続運用耐性ゲート</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">保守性・引き継ぎゲート</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">medical compliance docs</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">3省2ガイドライン準拠ゲート</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">業種別 法定算定値 到達ゲート</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">変異試験センチネル</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">ナビリンク整合性ゲート</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">新設物の完成定義</div></td><td><span class="badge b-warn">注意</span></td><td></td></tr>
+<tr><td><div class="gname">Next.js App Router 境界違反ゲート</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">入力工数ゲート</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">PDF出力の物理保証センチネル</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">perfection loop</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">性能ベースライン検証</div><div class="gdesc">応答性能が基準内に収まっているかを検証</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">常にスイスイ動く実装ゲート</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">権限管理検証</div><div class="gdesc">役割ごとのアクセス権限の整合を検証</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">品質単調上昇ゲート</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">修正時リグレッションゲート</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">画面表示品質検証</div><div class="gdesc">実際のブラウザで画面を表示し、装飾崩れ・文字化けが無いかを実測</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">要件SoT台帳 完成ゲート</div></td><td><span class="badge b-pass">合格</span></td><td></td></tr>
+<tr><td><div class="gname">restart-resilience-check</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">rich ui inject</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">RSC境界ゲート</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">実走CRUD検証ゲート</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">実DBログインスモーク</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">safe-write-injector</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">規模計画完遂ゲート</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">業務シナリオ完遂ゲート</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">スキーマ変更×既存データ保持ゲート</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">スコア/集計鮮度ゲート</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">APIキー/機密保護保証</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">security assessment report</div></td><td><span class="badge b-pass">合格</span></td><td></td></tr>
+<tr><td><div class="gname">セキュリティ強化検証</div><div class="gdesc">通信防護・不正ログイン対策・暗号化など多軸で検証</div></td><td><span class="badge b-na">対象外</span></td><td>検査軸 0/23 適合</td></tr>
+<tr><td><div class="gname">生成物 自己回復力ゲート</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">Server Action 認証ガードゲート</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">セッション署名鍵衛生ゲート</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">完成後安定稼働ウィンドウ</div></td><td><span class="badge b-unv">未確認</span></td><td></td></tr>
+<tr><td><div class="gname">生成物の状態表示ゲート</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">生成物の状態表示ゲート</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">税務実装正確性ゲート</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">受入テスト検証</div><div class="gdesc">利用者目線の受入シナリオに基づく完全性を検証</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">リッチUI品質ゲート</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">ux first</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+<tr><td><div class="gname">ビジュアルQAゲート</div></td><td><span class="badge b-na">対象外</span></td><td></td></tr>
+</tbody></table>
+<div class="note">上記はプロジェクト内に保存された品質ゲートの実測記録のみを集計したものです。</div>
+<h3>実施できなかった検査 (7 件)</h3>
+<div class="note">次の検査は今回の生成では記録が残らなかったため、上の表に含まれていません。「不合格」ではなく「未実施」です。実施が必要な場合は担当者までご連絡ください。(件数は、この成果物フォルダの中に検査の記録が保存されているかどうかで数えています。記録の一部だけを別の場所へ写した状態で数えると、件数が変わることがあります。)</div>
+<table><thead><tr><th style='width:52%'>検証項目</th><th>状態</th></tr></thead><tbody>
+<tr><td>メガポータルゲート</td><td>未実施 (今回は対象外の可能性)</td></tr>
+<tr><td>画像CMSゲート</td><td>未実施 (今回は対象外の可能性)</td></tr>
+<tr><td>エンタープライズ連携ゲート</td><td>未実施 (今回は対象外の可能性)</td></tr>
+<tr><td>スキル生成品質ゲート</td><td>未実施 (毎回実施の対象)</td></tr>
+<tr><td>自動品質検査</td><td>未実施 (毎回実施の対象)</td></tr>
+<tr><td>部品表ゲート</td><td>未実施 (毎回実施の対象)</td></tr>
+<tr><td>権限の棚卸しゲート</td><td>未実施 (毎回実施の対象)</td></tr>
+</tbody></table>
+<div class="note">このほか 4 件の記録は判定を読み取れなかったため表示していません (未実施と同じ扱いです)。</div>
+<h2>2. 品質スコア総覧</h2>
+<div class="chartwrap">
+<svg viewBox="0 0 640 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="品質スコアレーダーチャート" style="max-width:640px;width:100%;height:auto"><polygon points="320.0,195.5 339.8,200.8 354.2,215.2 359.5,235.0 354.2,254.8 339.8,269.2 320.0,274.5 300.2,269.2 285.8,254.8 280.5,235.0 285.8,215.2 300.2,200.8" fill="none" stroke="#cbd5e1" stroke-width="1"/><polygon points="320.0,156.0 359.5,166.6 388.4,195.5 399.0,235.0 388.4,274.5 359.5,303.4 320.0,314.0 280.5,303.4 251.6,274.5 241.0,235.0 251.6,195.5 280.5,166.6" fill="none" stroke="#cbd5e1" stroke-width="1"/><polygon points="320.0,116.5 379.2,132.4 422.6,175.8 438.5,235.0 422.6,294.2 379.2,337.6 320.0,353.5 260.8,337.6 217.4,294.2 201.5,235.0 217.4,175.8 260.7,132.4" fill="none" stroke="#cbd5e1" stroke-width="1"/><polygon points="320.0,77.0 399.0,98.2 456.8,156.0 478.0,235.0 456.8,314.0 399.0,371.8 320.0,393.0 241.0,371.8 183.2,314.0 162.0,235.0 183.2,156.0 241.0,98.2" fill="none" stroke="#cbd5e1" stroke-width="1"/><line x1="320" y1="235" x2="320.0" y2="77.0" stroke="#dde3ec" stroke-width="1"/><text x="320.0" y="55.0" text-anchor="middle" font-size="12" fill="#334155">oscg ve</text><line x1="320" y1="235" x2="399.0" y2="98.2" stroke="#dde3ec" stroke-width="1"/><text x="412.0" y="79.7" text-anchor="start" font-size="12" fill="#334155">アクセシビリテ</text><line x1="320" y1="235" x2="456.8" y2="156.0" stroke="#dde3ec" stroke-width="1"/><text x="479.3" y="147.0" text-anchor="start" font-size="12" fill="#334155">業務計算 実走</text><line x1="320" y1="235" x2="478.0" y2="235.0" stroke="#dde3ec" stroke-width="1"/><text x="504.0" y="239.0" text-anchor="start" font-size="12" fill="#334155">完成確認</text><line x1="320" y1="235" x2="456.8" y2="314.0" stroke="#dde3ec" stroke-width="1"/><text x="479.3" y="331.0" text-anchor="start" font-size="12" fill="#334155">業務貫通</text><line x1="320" y1="235" x2="399.0" y2="371.8" stroke="#dde3ec" stroke-width="1"/><text x="412.0" y="398.3" text-anchor="start" font-size="12" fill="#334155">図面案件の完成</text><line x1="320" y1="235" x2="320.0" y2="393.0" stroke="#dde3ec" stroke-width="1"/><text x="320.0" y="423.0" text-anchor="middle" font-size="12" fill="#334155">DS-M2 G</text><line x1="320" y1="235" x2="241.0" y2="371.8" stroke="#dde3ec" stroke-width="1"/><text x="228.0" y="398.3" text-anchor="end" font-size="12" fill="#334155">ゲート結線到達</text><line x1="320" y1="235" x2="183.2" y2="314.0" stroke="#dde3ec" stroke-width="1"/><text x="160.7" y="331.0" text-anchor="end" font-size="12" fill="#334155">知財コンプライ</text><line x1="320" y1="235" x2="162.0" y2="235.0" stroke="#dde3ec" stroke-width="1"/><text x="136.0" y="239.0" text-anchor="end" font-size="12" fill="#334155">新設物の完成定</text><line x1="320" y1="235" x2="183.2" y2="156.0" stroke="#dde3ec" stroke-width="1"/><text x="160.7" y="147.0" text-anchor="end" font-size="12" fill="#334155">要件SoT台帳</text><line x1="320" y1="235" x2="241.0" y2="98.2" stroke="#dde3ec" stroke-width="1"/><text x="228.0" y="79.7" text-anchor="end" font-size="12" fill="#334155">securit</text><polygon points="320.0,195.5 399.0,98.2 456.8,156.0 359.5,235.0 402.1,282.4 399.0,371.8 320.0,393.0 272.6,317.1 183.2,314.0 225.2,235.0 183.2,156.0 241.0,98.2" fill="rgba(15,118,110,0.22)" stroke="#0f766e" stroke-width="2"/><circle cx="320.0" cy="195.5" r="3.5" fill="#0f766e"><title>oscg verdict: 25点</title></circle><circle cx="399.0" cy="98.2" r="3.5" fill="#0f766e"><title>アクセシビリティゲート: 100点</title></circle><circle cx="456.8" cy="156.0" r="3.5" fill="#0f766e"><title>業務計算 実走照合率 開示ゲート: 100点</title></circle><circle cx="359.5" cy="235.0" r="3.5" fill="#0f766e"><title>完成の検査: 25点</title></circle><circle cx="402.1" cy="282.4" r="3.5" fill="#0f766e"><title>業務貫通度検証: 60点</title></circle><circle cx="399.0" cy="371.8" r="3.5" fill="#0f766e"><title>図面案件の完成判定: 100点</title></circle><circle cx="320.0" cy="393.0" r="3.5" fill="#0f766e"><title>DS-M2 Gate Ledger: 100点</title></circle><circle cx="272.6" cy="317.1" r="3.5" fill="#0f766e"><title>ゲート結線到達性: 60点</title></circle><circle cx="183.2" cy="314.0" r="3.5" fill="#0f766e"><title>知財コンプライアンスゲート: 100点</title></circle><circle cx="225.2" cy="235.0" r="3.5" fill="#0f766e"><title>新設物の完成定義: 60点</title></circle><circle cx="183.2" cy="156.0" r="3.5" fill="#0f766e"><title>要件SoT台帳 完成ゲート: 100点</title></circle><circle cx="241.0" cy="98.2" r="3.5" fill="#0f766e"><title>security assessment report: 100点</title></circle><text x="320" y="73.0" font-size="9" fill="#94a3b8" text-anchor="middle">100</text></svg>
+<div class="scoreline">総合品質スコア <b>78</b> / 100 点 (実測 12 軸の平均)</div>
+</div>
+<div class="note">品質フレームワーク全34軸 (標準29軸+新5軸) のうち、本プロジェクトで実際に測定された 12 軸のみを表示しています。スコアは各ゲートの実判定 (合格=100 / 注意=60 / 不合格=25 / 重大=10) に基づきます。</div>
+<h2>3. 真正性 (改ざん検証)</h2>
+<div class="seal">
+<div class="qr"><svg viewBox="0 0 117 117" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="検証コード" width="110" height="110"><rect x="0" y="0" width="117" height="117" fill="#ffffff" stroke="#cbd5e1"/><rect x="56" y="6" width="5" height="5" fill="#0f766e"/><rect x="56" y="11" width="5" height="5" fill="#0f766e"/><rect x="61" y="11" width="5" height="5" fill="#0f766e"/><rect x="66" y="11" width="5" height="5" fill="#0f766e"/><rect x="46" y="16" width="5" height="5" fill="#0f766e"/><rect x="51" y="16" width="5" height="5" fill="#0f766e"/><rect x="56" y="16" width="5" height="5" fill="#0f766e"/><rect x="66" y="16" width="5" height="5" fill="#0f766e"/><rect x="46" y="21" width="5" height="5" fill="#0f766e"/><rect x="51" y="21" width="5" height="5" fill="#0f766e"/><rect x="56" y="21" width="5" height="5" fill="#0f766e"/><rect x="61" y="21" width="5" height="5" fill="#0f766e"/><rect x="46" y="26" width="5" height="5" fill="#0f766e"/><rect x="61" y="26" width="5" height="5" fill="#0f766e"/><rect x="66" y="26" width="5" height="5" fill="#0f766e"/><rect x="51" y="31" width="5" height="5" fill="#0f766e"/><rect x="56" y="31" width="5" height="5" fill="#0f766e"/><rect x="66" y="31" width="5" height="5" fill="#0f766e"/><rect x="51" y="36" width="5" height="5" fill="#0f766e"/><rect x="61" y="36" width="5" height="5" fill="#0f766e"/><rect x="66" y="36" width="5" height="5" fill="#0f766e"/><rect x="46" y="41" width="5" height="5" fill="#0f766e"/><rect x="56" y="41" width="5" height="5" fill="#0f766e"/><rect x="6" y="46" width="5" height="5" fill="#0f766e"/><rect x="26" y="46" width="5" height="5" fill="#0f766e"/><rect x="31" y="46" width="5" height="5" fill="#0f766e"/><rect x="51" y="46" width="5" height="5" fill="#0f766e"/><rect x="56" y="46" width="5" height="5" fill="#0f766e"/><rect x="61" y="46" width="5" height="5" fill="#0f766e"/><rect x="66" y="46" width="5" height="5" fill="#0f766e"/><rect x="76" y="46" width="5" height="5" fill="#0f766e"/><rect x="81" y="46" width="5" height="5" fill="#0f766e"/><rect x="86" y="46" width="5" height="5" fill="#0f766e"/><rect x="96" y="46" width="5" height="5" fill="#0f766e"/><rect x="101" y="46" width="5" height="5" fill="#0f766e"/><rect x="106" y="46" width="5" height="5" fill="#0f766e"/><rect x="6" y="51" width="5" height="5" fill="#0f766e"/><rect x="11" y="51" width="5" height="5" fill="#0f766e"/><rect x="16" y="51" width="5" height="5" fill="#0f766e"/><rect x="26" y="51" width="5" height="5" fill="#0f766e"/><rect x="31" y="51" width="5" height="5" fill="#0f766e"/><rect x="41" y="51" width="5" height="5" fill="#0f766e"/><rect x="61" y="51" width="5" height="5" fill="#0f766e"/><rect x="71" y="51" width="5" height="5" fill="#0f766e"/><rect x="91" y="51" width="5" height="5" fill="#0f766e"/><rect x="101" y="51" width="5" height="5" fill="#0f766e"/><rect x="106" y="51" width="5" height="5" fill="#0f766e"/><rect x="11" y="56" width="5" height="5" fill="#0f766e"/><rect x="21" y="56" width="5" height="5" fill="#0f766e"/><rect x="31" y="56" width="5" height="5" fill="#0f766e"/><rect x="36" y="56" width="5" height="5" fill="#0f766e"/><rect x="46" y="56" width="5" height="5" fill="#0f766e"/><rect x="51" y="56" width="5" height="5" fill="#0f766e"/><rect x="56" y="56" width="5" height="5" fill="#0f766e"/><rect x="61" y="56" width="5" height="5" fill="#0f766e"/><rect x="66" y="56" width="5" height="5" fill="#0f766e"/><rect x="86" y="56" width="5" height="5" fill="#0f766e"/><rect x="101" y="56" width="5" height="5" fill="#0f766e"/><rect x="106" y="56" width="5" height="5" fill="#0f766e"/><rect x="6" y="61" width="5" height="5" fill="#0f766e"/><rect x="31" y="61" width="5" height="5" fill="#0f766e"/><rect x="51" y="61" width="5" height="5" fill="#0f766e"/><rect x="61" y="61" width="5" height="5" fill="#0f766e"/><rect x="66" y="61" width="5" height="5" fill="#0f766e"/><rect x="81" y="61" width="5" height="5" fill="#0f766e"/><rect x="86" y="61" width="5" height="5" fill="#0f766e"/><rect x="96" y="61" width="5" height="5" fill="#0f766e"/><rect x="101" y="61" width="5" height="5" fill="#0f766e"/><rect x="11" y="66" width="5" height="5" fill="#0f766e"/><rect x="26" y="66" width="5" height="5" fill="#0f766e"/><rect x="56" y="66" width="5" height="5" fill="#0f766e"/><rect x="61" y="66" width="5" height="5" fill="#0f766e"/><rect x="66" y="66" width="5" height="5" fill="#0f766e"/><rect x="76" y="66" width="5" height="5" fill="#0f766e"/><rect x="81" y="66" width="5" height="5" fill="#0f766e"/><rect x="86" y="66" width="5" height="5" fill="#0f766e"/><rect x="96" y="66" width="5" height="5" fill="#0f766e"/><rect x="51" y="71" width="5" height="5" fill="#0f766e"/><rect x="71" y="71" width="5" height="5" fill="#0f766e"/><rect x="86" y="71" width="5" height="5" fill="#0f766e"/><rect x="91" y="71" width="5" height="5" fill="#0f766e"/><rect x="96" y="71" width="5" height="5" fill="#0f766e"/><rect x="46" y="76" width="5" height="5" fill="#0f766e"/><rect x="51" y="76" width="5" height="5" fill="#0f766e"/><rect x="56" y="76" width="5" height="5" fill="#0f766e"/><rect x="61" y="76" width="5" height="5" fill="#0f766e"/><rect x="76" y="76" width="5" height="5" fill="#0f766e"/><rect x="91" y="76" width="5" height="5" fill="#0f766e"/><rect x="96" y="76" width="5" height="5" fill="#0f766e"/><rect x="101" y="76" width="5" height="5" fill="#0f766e"/><rect x="106" y="76" width="5" height="5" fill="#0f766e"/><rect x="51" y="81" width="5" height="5" fill="#0f766e"/><rect x="56" y="81" width="5" height="5" fill="#0f766e"/><rect x="106" y="81" width="5" height="5" fill="#0f766e"/><rect x="46" y="86" width="5" height="5" fill="#0f766e"/><rect x="51" y="86" width="5" height="5" fill="#0f766e"/><rect x="56" y="86" width="5" height="5" fill="#0f766e"/><rect x="91" y="86" width="5" height="5" fill="#0f766e"/><rect x="101" y="86" width="5" height="5" fill="#0f766e"/><rect x="106" y="86" width="5" height="5" fill="#0f766e"/><rect x="51" y="91" width="5" height="5" fill="#0f766e"/><rect x="61" y="91" width="5" height="5" fill="#0f766e"/><rect x="66" y="91" width="5" height="5" fill="#0f766e"/><rect x="91" y="91" width="5" height="5" fill="#0f766e"/><rect x="101" y="91" width="5" height="5" fill="#0f766e"/><rect x="106" y="91" width="5" height="5" fill="#0f766e"/><rect x="46" y="96" width="5" height="5" fill="#0f766e"/><rect x="56" y="96" width="5" height="5" fill="#0f766e"/><rect x="61" y="96" width="5" height="5" fill="#0f766e"/><rect x="81" y="96" width="5" height="5" fill="#0f766e"/><rect x="86" y="96" width="5" height="5" fill="#0f766e"/><rect x="91" y="96" width="5" height="5" fill="#0f766e"/><rect x="96" y="96" width="5" height="5" fill="#0f766e"/><rect x="101" y="96" width="5" height="5" fill="#0f766e"/><rect x="106" y="96" width="5" height="5" fill="#0f766e"/><rect x="46" y="101" width="5" height="5" fill="#0f766e"/><rect x="51" y="101" width="5" height="5" fill="#0f766e"/><rect x="61" y="101" width="5" height="5" fill="#0f766e"/><rect x="86" y="101" width="5" height="5" fill="#0f766e"/><rect x="106" y="101" width="5" height="5" fill="#0f766e"/><rect x="51" y="106" width="5" height="5" fill="#0f766e"/><rect x="61" y="106" width="5" height="5" fill="#0f766e"/><rect x="76" y="106" width="5" height="5" fill="#0f766e"/><rect x="91" y="106" width="5" height="5" fill="#0f766e"/><rect x="96" y="106" width="5" height="5" fill="#0f766e"/><rect x="101" y="106" width="5" height="5" fill="#0f766e"/><rect x="106" y="106" width="5" height="5" fill="#0f766e"/><rect x="6" y="6" width="35" height="35" fill="#1b2a4a"/><rect x="11" y="11" width="25" height="25" fill="#ffffff"/><rect x="16" y="16" width="15" height="15" fill="#1b2a4a"/><rect x="76" y="6" width="35" height="35" fill="#1b2a4a"/><rect x="81" y="11" width="25" height="25" fill="#ffffff"/><rect x="86" y="16" width="15" height="15" fill="#1b2a4a"/><rect x="6" y="76" width="35" height="35" fill="#1b2a4a"/><rect x="11" y="81" width="25" height="25" fill="#ffffff"/><rect x="16" y="86" width="15" height="15" fill="#1b2a4a"/></svg></div>
+<div class="sealtext">
+フィンガープリント: <span class="fp">bec02d0e0b6ffca6</span><br>
+発行日時: 2026年09月14日 20:59 (UTC)<br>
+検証URL: <span class="vurl">https://admin-dashboard-blue-alpha-78.vercel.app/verify/bec02d0e0b6ffca65a4555429fb4ffe73c33622828fa7cd6a889a6a95e66a538</span><br>
+<span style="display:inline-block;margin-top:6px;color:#475569">この証明書は SoloptiLink で発行・検証できます。記載された判定が後から書き換えられていないことを、上記URLまたはお手元で照合できます。</span>
+</div></div>
+</div>
+<footer>
+<span>生成日時: 2026年09月14日 20:59 (UTC) ／ フィンガープリント bec02d0e0b6ffca6</span>
+<span>本証明書は <span class="brand">SoloptiLinkAI v2040</span> が実測データのみから自動生成しました。</span>
+</footer>
+</main></body></html>

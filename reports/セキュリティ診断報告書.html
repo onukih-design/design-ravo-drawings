@@ -1,0 +1,86 @@
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>セキュリティ診断報告書 — design_ravo_drawings</title>
+<style>
+:root{--bg:#fff;--fg:#1a1d23;--mut:#5b6472;--line:#e4e7ec;--card:#f8fafc;
+--ok:#047857;--okb:#d1fae5;--warn:#b45309;--warnb:#fef3c7;--bad:#b91c1c;--badb:#fee2e2;--na:#475569;--nab:#e2e8f0}
+@media(prefers-color-scheme:dark){:root{--bg:#0f1115;--fg:#e8eaed;--mut:#9aa4b2;--line:#242a33;--card:#171a21;
+--ok:#6ee7b7;--okb:#064e3b;--warn:#fcd34d;--warnb:#5c3d09;--bad:#fca5a5;--badb:#5c1a1a;--na:#cbd5e1;--nab:#2b323d}}
+:root[data-theme=dark]{--bg:#0f1115;--fg:#e8eaed;--mut:#9aa4b2;--line:#242a33;--card:#171a21;
+--ok:#6ee7b7;--okb:#064e3b;--warn:#fcd34d;--warnb:#5c3d09;--bad:#fca5a5;--badb:#5c1a1a;--na:#cbd5e1;--nab:#2b323d}
+:root[data-theme=light]{--bg:#fff;--fg:#1a1d23;--mut:#5b6472;--line:#e4e7ec;--card:#f8fafc;
+--ok:#047857;--okb:#d1fae5;--warn:#b45309;--warnb:#fef3c7;--bad:#b91c1c;--badb:#fee2e2;--na:#475569;--nab:#e2e8f0}
+*{box-sizing:border-box}
+body{margin:0;padding:2rem 1.25rem 4rem;background:var(--bg);color:var(--fg);
+font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",system-ui,sans-serif;line-height:1.75;-webkit-text-size-adjust:100%}
+.w{max-width:900px;margin:0 auto}
+h1{font-size:1.6rem;margin:0 0 .3rem;letter-spacing:.01em}
+h2{font-size:1.12rem;margin:2.4rem 0 .8rem;padding-bottom:.4rem;border-bottom:2px solid var(--line)}
+.sub{color:var(--mut);font-size:.9rem;margin:0 0 1.6rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.8rem;margin:1.2rem 0}
+.k{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:1rem}
+.k .n{font-size:1.7rem;font-weight:700;line-height:1.2}
+.k .l{font-size:.8rem;color:var(--mut);margin-top:.2rem}
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:.92rem;min-width:420px}
+th,td{padding:.65rem .7rem;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-size:.82rem;color:var(--mut);font-weight:600}
+td.c,th.c{text-align:center;white-space:nowrap}
+.d{color:var(--mut);font-size:.82rem}
+.b{display:inline-block;padding:.16rem .6rem;border-radius:999px;font-size:.78rem;font-weight:700;white-space:nowrap}
+.ok{background:var(--okb);color:var(--ok)}.warn{background:var(--warnb);color:var(--warn)}
+.bad{background:var(--badb);color:var(--bad)}.na{background:var(--nab);color:var(--na)}
+.f{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--line);border-radius:8px;padding:.9rem 1rem;margin:.7rem 0}
+.fh{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap;margin-bottom:.4rem}
+.f p{margin:0;font-size:.92rem}
+.none{color:var(--mut);font-size:.92rem}
+.warnbox{background:var(--warnb);color:var(--warn);border-radius:8px;padding:.9rem 1.1rem;margin:1rem 0;font-size:.9rem}
+.warnbox ul{margin:.4rem 0 0;padding-left:1.2rem}
+.lim{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:1rem 1.1rem}
+.lim ul{margin:.5rem 0 0;padding-left:1.2rem;font-size:.9rem}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--line);color:var(--mut);font-size:.82rem}
+@media print{body{padding:0}.k,.f,.lim{break-inside:avoid}}
+</style>
+<div class="w">
+<header>
+<h1>セキュリティ診断報告書</h1>
+<p class="sub">対象システム: design_ravo_drawings ／ 発行日: 2026年09月15日 05:57</p>
+</header>
+<main>
+
+<div class="grid">
+<div class="k"><div class="n">0<span style="font-size:1rem">%</span></div><div class="l">実装項目の適合率</div></div>
+<div class="k"><div class="n" style="font-size:1.7rem">0<span style="font-size:1rem"> / 1</span></div><div class="l">適合した検査項目</div></div>
+<div class="k"><div class="n">0</div><div class="l">重要度 高の指摘</div></div>
+<div class="k"><div class="n">0</div><div class="l">重要度 中の指摘</div></div>
+</div>
+
+<div class="warnbox"><strong>今回実施していない検査</strong><ul><li>外部部品の弱点照会 — 未実施 (部品一覧が取得できませんでした)</li><li>情報セキュリティ基準への適合度評価 — 未実施</li></ul></div>
+
+<h2>1. 改善が必要な項目と対応方法</h2>
+<p class="none">改善が必要な項目は検出されませんでした。</p>
+
+<h2>2. 実装状況の検査結果</h2>
+<div class="tw"><table><thead><tr><th>検査項目</th><th class="c">結果</th></tr></thead><tbody><tr><td><strong>通信の保護設定</strong><br><span class="d">ブラウザに安全な通信・表示を強制する設定</span></td><td class="c"><span class="b na">対象外</span></td></tr><tr><td><strong>過剰アクセスの抑制</strong><br><span class="d">短時間の大量リクエストを制限する仕組み</span></td><td class="c"><span class="b na">対象外</span></td></tr><tr><td><strong>ログイン試行の制限</strong><br><span class="d">パスワードの総当たり攻撃を止める仕組み</span></td><td class="c"><span class="b na">対象外</span></td></tr><tr><td><strong>使用部品の既知の弱点</strong><br><span class="d">利用中の外部部品に公表済みの弱点がないか</span></td><td class="c"><span class="b na">対象外</span></td></tr><tr><td><strong>他人のデータ閲覧防止</strong><br><span class="d">URLの番号を書き換えて他人の記録を開けないか</span></td><td class="c"><span class="b na">対象外</span></td></tr><tr><td><strong>入力の長さ制限</strong><br><span class="d">極端に長い入力を受け付けない設定</span></td><td class="c"><span class="b na">対象外</span></td></tr><tr><td><strong>重要情報の暗号化</strong><br><span class="d">個人情報を保存時に暗号化する仕組み</span></td><td class="c"><span class="b na">対象外</span></td></tr><tr><td><strong>二要素認証</strong><br><span class="d">パスワードに加えた本人確認の手段</span></td><td class="c"><span class="b na">対象外</span></td></tr><tr><td><strong>データ削除への対応</strong><br><span class="d">利用者からの削除請求に応じる仕組み</span></td><td class="c"><span class="b na">対象外</span></td></tr><tr><td><strong>パスワード再設定</strong><br><span class="d">安全な手順での再設定機能</span></td><td class="c"><span class="b na">対象外</span></td></tr><tr><td><strong>ログイン状態の失効</strong><br><span class="d">退職者等のログインを即座に無効化できるか</span></td><td class="c"><span class="b na">対象外</span></td></tr><tr><td><strong>不正スクリプトの遮断</strong><br><span class="d">外部の不正なスクリプト実行を防ぐ設定</span></td><td class="c"><span class="b na">対象外</span></td></tr><tr><td><strong>自動検査の常設</strong><br><span class="d">変更のたびに自動で弱点を調べる仕組み</span></td><td class="c"><span class="b na">対象外</span></td></tr><tr><td><strong>なりすまし送信の防止</strong><br><span class="d">他サイトから勝手に操作されるのを防ぐ</span></td><td class="c"><span class="b na">対象外</span></td></tr><tr><td><strong>外部部品の改ざん検知</strong><br><span class="d">読み込む外部ファイルのすり替えを検知</span></td><td class="c"><span class="b na">対象外</span></td></tr><tr><td><strong>端末機能の利用制限</strong><br><span class="d">カメラ・位置情報などの利用範囲の制限</span></td><td class="c"><span class="b na">対象外</span></td></tr><tr><td><strong>ログイン情報の保護</strong><br><span class="d">ログイン状態を保つ情報の盗み取り対策</span></td><td class="c"><span class="b na">対象外</span></td></tr><tr><td><strong>外部サイトからの利用</strong><br><span class="d">どのサイトからの呼び出しを許すかの設定</span></td><td class="c"><span class="b na">対象外</span></td></tr><tr><td><strong>入力内容の検証</strong><br><span class="d">想定外の値をそのまま保存しないための検査</span></td><td class="c"><span class="b na">対象外</span></td></tr><tr><td><strong>データベース攻撃対策</strong><br><span class="d">入力を使ってデータベースを不正操作されないか</span></td><td class="c"><span class="b na">対象外</span></td></tr><tr><td><strong>表示の乗っ取り対策</strong><br><span class="d">投稿内容に仕込まれた不正コードの実行防止</span></td><td class="c"><span class="b na">対象外</span></td></tr><tr><td><strong>サーバー操作の悪用</strong><br><span class="d">入力を使ってサーバーの命令や資料を操作されないか</span></td><td class="c"><span class="b na">対象外</span></td></tr><tr><td><strong>接続先の乗っ取り対策</strong><br><span class="d">利用者が指定した先へサーバーが無検証で接続しないか</span></td><td class="c"><span class="b na">対象外</span></td></tr></tbody></table></div>
+
+<h2>3. 接続情報の取り扱い</h2>
+<p>- ファイルを、- 種類の接続情報の記述形式について検査しました。検出 <b>0</b> 件。</p>
+
+<h2>4. 外部部品の既知の弱点</h2>
+<p class="none">本項目は今回実施していません。</p>
+
+<h2>5. 情報セキュリティ基準への適合度</h2>
+<div class="tw"><p class="none">本項目は今回実施していません。</p></div>
+
+<h2>6. 本診断の範囲と限界</h2>
+<div class="lim">
+<p style="margin:0;font-size:.92rem">本報告書は実際に検査を行った結果のみを記載しています。以下は今回の診断に含まれません。</p>
+<ul><li>稼働中のシステムへ実際に攻撃を試みる侵入テストは行っていません。本診断は実装内容の検査です。</li><li>利用者の運用体制・端末管理・物理的な安全管理措置は対象外です。</li><li>本診断は当社が構築した部分を対象とし、お客様側で追加・改変された箇所は含みません。</li><li>外部サービスとの連携先そのものの安全性は、連携先事業者の責任範囲です。</li></ul>
+</div>
+</main>
+
+<footer>
+本報告書は SoloptiLinkAI により、対象システムを実際に検査して自動生成されたものです。<br>
+記載内容はすべて検査時点の実測結果であり、推定値は含まれません。<br>
+発行: SoloptiLink Inc. ／ お問い合わせ: nomura.y@soloptilink.com
+</footer>
+</div>
